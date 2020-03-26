@@ -1,3 +1,4 @@
+from noeud import Noeud
 
 
 class Lien:
@@ -7,7 +8,6 @@ class Lien:
         self.__node1 = node1
         self.__node2 = node2
         self.__distance = distance
-
 
     def getId(cls):
         return Lien.Identifiant
@@ -34,9 +34,4 @@ class Lien:
         self.__node2 = noeud2
 
     def __str__(self):
-        print("id = "+self.getId())
-
-
-
-
-
+        print("id = " + self.getId())
