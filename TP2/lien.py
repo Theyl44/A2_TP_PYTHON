@@ -1,3 +1,5 @@
+
+
 class Lien:
 
     def __init__(self, node1, node2, distance):
