@@ -36,11 +36,11 @@ class Graph:
 
     def printGraph(self):
         print("Graph["+str(self.id)+"]")
-        print("Id des noeuds du graphe :")
+        print("Id des noeuds du graphe => l'id des liens")
         for elem1 in self.dictNode:
             self.dictNode[elem1].printNoeud()
             
-        print("Id des liens du graphe :")
+        print("Id des liens du graphe = noeud1 -> noeud2 = distance ")
         for elem2 in self.dictLink:
             self.dictLink[elem2].printLien()
 

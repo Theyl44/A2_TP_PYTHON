@@ -17,25 +17,17 @@ def creationGraphe(id , path):
             graph.addNoeud(Noeud(list()))
         for i in range(1, len(content)):
             graph.addLink(Lien(graph.dictNode[int(content[i][0][0])], graph.dictNode[int(content[i][0][2])], float(content[i][0][4:])))
+        for i in range(1, len(content)):
+            link = graph.dictLink[i]
+            nod1 = link.getNoeud1()
+            nod2 = link.getNoeud2()
 
-        # TODO faire le lien entre les liens et la liste de chaque noeud
+            nod1.ajoutIdentifiantLien(link)
+            nod2.ajoutIdentifiantLien(link)
+
         return graph
 
 
 Graph1 = creationGraphe(1, 'fileGraph1.csv')
-# nod1 = Noeud(list())
-# nod2 = Noeud(list())
-# lien1 = Lien(nod1, nod2, 2)
-# lien2 = Lien(nod2, nod1, 3)
-# Graph1 = Graph(1)
-# Graph1.addNoeud(nod1)
-# Graph1.addNoeud(nod2)
-# Graph1.addLink(lien1)
-# Graph1.addLink(lien2)
-# nod3 = Graph1.dictNode[nod1.getId()]
-# if nod1 == nod3:
-#     print("true")
-# else:
-#     print("false")
 Graph1.printGraph()
 

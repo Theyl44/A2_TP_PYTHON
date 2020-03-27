@@ -19,11 +19,13 @@ class Noeud:
         self.__l1 = l1
 
     def printNoeud(self):
-        print("[" + str(self.getId()) + "]")
+        print("[" + str(self.getId()) + "] =>", end="")
+        self.afficherIdentifiantLien()
+        print()
 
     def afficherIdentifiantLien(self):
         for elem in self.__l1:
-            print(elem.id)
+            print("["+str(elem.getId())+"]", end="")
 
     def ajoutIdentifiantLien(self, id):
         self.__l1.append(id)

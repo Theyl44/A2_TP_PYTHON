@@ -38,5 +38,5 @@ class Lien:
     def printLien(self):
         print("[" + str(self.getId()) + "] = ", end="")
         print("["+str(self.getNoeud1().getId())+"]", end="->")
-        print("["+str(self.getNoeud2().getId())+"]", end="=")
+        print("["+str(self.getNoeud2().getId())+"]", end=" = ")
         print(self.getDistance())
