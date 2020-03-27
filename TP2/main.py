@@ -12,11 +12,15 @@ def creationGraphe(id , path):
         for row in fileRead:
             row[0] = row[0].replace('\t', " ")
             content.append(row)
-        # print(content[1][0][2])
+        print(type(content[1]))
         for i in range(0, int(content[0][0])):
             graph.addNoeud(Noeud(list()))
         for i in range(1, len(content)):
-            graph.addLink(Lien(graph.dictNode[int(content[i][0][0])], graph.dictNode[int(content[i][0][2])], float(content[i][0][4:])))
+            val1 = int(content[i][0][0])
+            val2 = int(content[i][0][2])
+            distance = float(content[i][0][4:])
+            print(i, val1, val2, distance)
+            graph.addLink(Lien(graph.dictNode[val1], graph.dictNode[val2], distance))
         for i in range(1, len(content)):
             link = graph.dictLink[i]
             nod1 = link.getNoeud1()
