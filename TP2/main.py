@@ -12,24 +12,13 @@ def creationGraphe(id , path):
         for row in fileRead:
             row[0] = row[0].replace('\t', " ")
             content.append(row)
-        # print(content[3][0][4:])
+        # print(content[1][0][2])
         for i in range(0, int(content[0][0])):
             graph.addNoeud(Noeud(list()))
         for i in range(1, len(content)):
-            # print(content[i][0][:2])
-            # print(content[i][0][4])
-            # print(content[i][0][4:])
-            # print("---")
+            graph.addLink(Lien(graph.dictNode[int(content[i][0][0])], graph.dictNode[int(content[i][0][2])], float(content[i][0][4:])))
 
-            node1 = graph.dictNode[content[i][0][:2]]
-            node2 = graph.dictNode[content[i][0][4]]
-            distance = float(content[i][0][4:])
-            lien = Lien(node1, node2, distance)
-            graph.addLink(Lien(node1, node2, distance))
-
-        # TODO faire le lien entre les liens et la liste de chaque noeu
-        # TODO finir le tp askip
-        # graph.printGraph()
+        # TODO faire le lien entre les liens et la liste de chaque noeud
         return graph
 
 
