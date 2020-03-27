@@ -2,18 +2,20 @@ from noeud import Noeud
 
 
 class Lien:
+    id1 = 0
 
     def __init__(self, node1, node2, distance):
-        self.__id = 1
+        Lien.id1 += 1
+        self.__id = Lien.id1
         self.__node1 = node1
         self.__node2 = node2
         self.__distance = distance
 
-    def getId(cls):
-        return Lien.Identifiant
+    def getId(self):
+        return self.__id
 
-    def setId(self, id):
-        self.__id = id
+    def setId(self, id1):
+        self.__id = id1
 
     def getDistance(self):
         return self.__distance
@@ -33,5 +35,8 @@ class Lien:
     def setNoeud2(self, noeud2):
         self.__node2 = noeud2
 
-    def __str__(self):
-        print("id = " + self.getId())
+    def printLien(self):
+        print("[" + str(self.getId()) + "] = ", end="")
+        print("["+str(self.getNoeud1().getId())+"]", end="->")
+        print("["+str(self.getNoeud2().getId())+"]", end="=")
+        print(self.getDistance())

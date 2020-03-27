@@ -3,23 +3,29 @@ from noeud import Noeud
 class Graph:
 
     def __init__(self, id):
-        self._id = id
-        self._nbrNodes = 0
-        self._dictNodes = {}
-        self._dictLinks = {}
+        self.id = id
+        self.nbrNodes = 0
+        self.dictNode = {}
+        self.dictLink = {}
 
     def getNbrNodes(self):  
-        return self._nbrNodes
+        return self.nbrNodes
 
     def addNoeud(self, Noeud):
-        self._nbrNodes += 1
-        self._dictNodes[Noeud.getId()] = Noeud
+        self.nbrNodes += 1
+        self.dictNode[Noeud.getId()] = Noeud
+
+    def getDictNode(self):
+        return self.dictNode
+
+    def getDictLink(self):
+        return self.dictLink
 
     def addLink(self, Lien):
-        self._dictLinks[Lien.getId()] = Lien
+        self.dictLink[Lien.getId()] = Lien
 
     def obtenirProchainsNoeuds(self, id):
-        lien = self._dictNodes[id].__l1
+        lien = self.dictNode[id].__l1
         newdict = {}
         for i in range(0, len(lien)):
             if lien[i].getNoeud1 == id:
@@ -28,14 +34,15 @@ class Graph:
                 newdict[lien[i].getNoeud1] = lien[i].getDistance
         return newdict
 
-    def __str__(self):
+    def printGraph(self):
+        print("Graph["+str(self.id)+"]")
         print("Id des noeuds du graphe :")
-        for elem1 in self._dictNodes:
-            self._dictNodes[elem1].__str__()
+        for elem1 in self.dictNode:
+            self.dictNode[elem1].printNoeud()
             
         print("Id des liens du graphe :")
-        for elem2 in self._dictLinks:
-            self._dictNodes[elem2].__str__()
+        for elem2 in self.dictLink:
+            self.dictLink[elem2].printLien()
 
 
 
