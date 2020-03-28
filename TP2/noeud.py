@@ -24,8 +24,8 @@ class Noeud:
         print()
 
     def afficherIdentifiantLien(self):
-        for elem in self.__l1:
-            print("["+str(elem.getId())+"]", end="")
+            for elem in self.__l1:
+                print("["+str(elem.getId())+"]", end="")
 
     def ajoutIdentifiantLien(self, id):
         self.__l1.append(id)

@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6d9d4db3-85c7-4181-abb7-699adb47f770" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TP2/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../TP2/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +29,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../pp/DigitsOfPi" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TP2" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
@@ -152,10 +153,10 @@
     <configuration />
   </component>
   <component name="WindowStateProjectService">
-    <state x="740" y="294" key="FileChooserDialogImpl" timestamp="1584880369297">
+    <state x="740" y="294" key="FileChooserDialogImpl" timestamp="1585414069265">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="740" y="294" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1584880369297" />
+    <state x="740" y="294" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1585414069265" />
     <state width="1899" height="223" key="GridCell.Tab.0.bottom" timestamp="1584880370667">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
