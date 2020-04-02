@@ -28,7 +28,6 @@ class Graph:
         self.dictLink[Lien.getId()] = Lien
 
     def obtenirProchainsNoeuds(self, id):
-        noeud1 = self.dictNode[id].__l1
         lien = self.dictNode[int(id)].__l1
         newdict = {}
         for i in range(0, len(lien)):
@@ -36,7 +35,7 @@ class Graph:
                 newdict[lien[i].getNoeud2] = lien[i].getDistance
             else:
                 newdict[lien[i].getNoeud1] = lien[i].getDistance
-        return newdict, lien
+        return newdict
 
 
     def printGraph(self):
