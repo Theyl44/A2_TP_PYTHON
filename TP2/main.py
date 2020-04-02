@@ -56,6 +56,5 @@ def creationGraphe(id , path):
 Graph1 = creationGraphe(1, 'fileGraph1.csv')
 # Graph2 = creationGraphe(1, 'fileGraph2.csv')
 # Graph1.printGraph()
-idnoeud1 = 1
-idnoeud2 = 2
-print(Graph1.dijkstra(Graph1.dictNode[idnoeud1], Graph1.dictNode[idnoeud2]))
+distance = Graph1.dijkstra(Graph1.dictNode[1], Graph1.dictNode[2])
+print(distance)
