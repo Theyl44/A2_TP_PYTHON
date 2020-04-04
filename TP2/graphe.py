@@ -1,4 +1,3 @@
-import sys
 from noeud import Noeud
 from collections import defaultdict
 import copy
@@ -18,6 +17,10 @@ class Graph:
         self.nbrNodes += 1
         self.dictNode[Noeud.getId()] = Noeud
 
+    def removeNoeud(self, idNoeud):
+        self.dictNode.pop(idNoeud)
+        return self.dictNode
+
     def getDictNode(self):
         return self.dictNode
 
@@ -26,17 +29,6 @@ class Graph:
 
     def addLink(self, Lien):
         self.dictLink[Lien.getId()] = Lien
-
-    def obtenirProchainsNoeuds(self, id):
-        lien = self.dictNode[int(id)].__l1
-        newdict = {}
-        for i in range(0, len(lien)):
-            if lien[i].getNoeud1 == id:
-                newdict[lien[i].getNoeud2] = lien[i].getDistance
-            else:
-                newdict[lien[i].getNoeud1] = lien[i].getDistance
-        return newdict
-
 
     def printGraph(self):
         print("Graph[" + str(self.id) + "]")
@@ -48,30 +40,75 @@ class Graph:
         for elem2 in self.dictLink:
             self.dictLink[elem2].printLien()
 
-    def dijkstra(self, f, t):
-        nodeId = f.getId()
-        dist = [None] * len(self.getDictNode())
-        for i in range(len(dist)):
-            dist[i] = sys.maxsize
-            dist[i].append([self.getDictNode()[nodeId]])
-        dist[nodeId][0] = 0
-        nodeQueue = [i for i in range(len(self.getDictNode()))]
-        nodesSeen = set()
-        while len(nodeQueue):
-            dist_min = sys.maxsize
-            node_min = None
-            for n in nodeQueue:
-                if dist[n][0] < dist_min and n not in nodesSeen:
-                    dist_min = dist[n][0]
-                    node_min = n
-            nodeQueue.remove(node_min)
-            nodesSeen.add(nodesSeen)
-            neighbours = self.obtenirProchainsNoeuds(node_min.getId())
-            for(node, edge) in neighbours:
-                dist_tot = edge.getl1() + dist_min
-                if dist_tot < dist[node.getId()][0]:
-                    dist[node.getId()][0] = dist_tot
-                    dist[node.getId()][1] = list(dist[node_min][1])
-                    dist[node.getId()][1].append(node)
-            return dist
+
+    def obtenirProchainsNoeuds(self, id):
+        nextNode = dict()
+        lien = self.dictNode[id].getl1()
+        for i in range(len(lien)):
+            if lien[i].getNoeud1().getId() == id:
+                nextNode[lien[i].getNoeud2().getId()] = lien[i].getDistance()
+            else:
+                nextNode[lien[i].getNoeud1().getId()] = lien[i].getDistance()
+        return nextNode
+
+    def dijkstra(self, noeudDep, noeudArr):
+        distance = {}      #distance
+        Path = {}          #chemin
+        NVisit = {}        #les elem qui sont visité id noeud : id si visité 0 sinon
+
+        # idNoeudDep = noeudDep.getId()
+        idNoeudDep = noeudDep
+        for i in range(1, self.getNbrNodes() + 1):
+            if i == idNoeudDep:
+                distance[i] = "0"
+                Path[i] = i
+                NVisit[i] = 0
+            else:
+                distance[i] = float('inf')
+                NVisit[i] = i
+                Path[i] = i
+
+        idCourant = idNoeudDep
+        bool = False
+        while bool == False:
+            i = 0
+            for elem in NVisit:
+                if NVisit[elem] == 0:
+                    i += 1
+
+            if i == len(NVisit) - 1 :
+                bool = True #on aura tout visité
+                break
+
+            listNoeudproxy = self.obtenirProchainsNoeuds(int(idCourant))
+            print(listNoeudproxy)
+            distanceMin = float('inf')
+
+            idmin = 0
+            for elem in listNoeudproxy:
+                val = listNoeudproxy[elem]
+                if val < distanceMin and NVisit[elem] != 0:
+                    distanceMin = val
+                    idmin = elem
+
+            print("+ p'tit distance = "+str(distanceMin)+" du noeud "+str(idmin))
+            for elem in listNoeudproxy:
+                distance[elem] = min(float(distance[elem]), float(distance[idCourant]) + float(listNoeudproxy[elem]))
+                if float(distance[elem]) > float(distance[idCourant]) + float(distanceMin):
+                    Path[elem] = str(Path[elem])+str(idCourant)
+
+            NVisit[idCourant] = 0
+            idCourant = idmin
+
+        return distance[noeudArr]
+
+
+
+
+
+
+
+
+
+
 
