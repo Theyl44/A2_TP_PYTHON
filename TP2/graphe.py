@@ -56,7 +56,7 @@ class Graph:
         Path = {}          #chemin
         NVisit = {}        #les elem qui sont visité id noeud : id si visité 0 sinon
 
-        # idNoeudDep = noeudDep.getId()
+        #init des val des dict
         idNoeudDep = noeudDep
         for i in range(1, self.getNbrNodes() + 1):
             if i == idNoeudDep:
@@ -70,7 +70,8 @@ class Graph:
 
         idCourant = idNoeudDep
         bool = False
-        while bool == False:
+        #on arrive dans le srx
+        while bool == False:#on verifie un sommet hors de P
             i = 0
             for elem in NVisit:
                 if NVisit[elem] == 0:
@@ -80,8 +81,9 @@ class Graph:
                 bool = True #on aura tout visité
                 break
 
+            # print("NC : "+str(idCourant))
             listNoeudproxy = self.obtenirProchainsNoeuds(int(idCourant))
-            print(listNoeudproxy)
+            # print(listNoeudproxy)
             distanceMin = float('inf')
 
             idmin = 0
@@ -91,7 +93,7 @@ class Graph:
                     distanceMin = val
                     idmin = elem
 
-            print("+ p'tit distance = "+str(distanceMin)+" du noeud "+str(idmin))
+            # print("+ p'tit distance = "+str(distanceMin)+" du noeud "+str(idmin))
             for elem in listNoeudproxy:
                 distance[elem] = min(float(distance[elem]), float(distance[idCourant]) + float(listNoeudproxy[elem]))
                 if float(distance[elem]) > float(distance[idCourant]) + float(distanceMin):
@@ -101,14 +103,3 @@ class Graph:
             idCourant = idmin
 
         return distance[noeudArr]
-
-
-
-
-
-
-
-
-
-
-
